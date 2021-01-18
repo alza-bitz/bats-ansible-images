@@ -19,6 +19,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./debian/buster
-          file: ./Dockerfile
+          file: ./debian/buster/Dockerfile
           push: false
           tags: alzadude/bats-ansible-debian:buster
