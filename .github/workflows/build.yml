@@ -20,5 +20,5 @@ jobs:
         with:
           context: ./debian/buster
           file: ./debian/buster/Dockerfile
-          push: false
+          push: true
           tags: alzadude/bats-ansible-debian:buster
