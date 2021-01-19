@@ -5,7 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: ['bats-ansible-debian:latest', 'bats-ansible-debian:buster']
+        image: 
+          - 'bats-ansible-debian:latest'
+          - 'bats-ansible-debian:buster'
+          - 'bats-ansible-fedora:latest'
+          - 'bats-ansible-fedora:33'
         include:
           - image: bats-ansible-debian:latest
             os: debian
@@ -13,6 +17,12 @@ jobs:
           - image: bats-ansible-debian:buster
             os: debian
             tag: buster
+          - image: bats-ansible-fedora:latest
+            os: fedora
+            tag: latest
+          - image: bats-ansible-fedora:33
+            os: fedora
+            tag: '33'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
