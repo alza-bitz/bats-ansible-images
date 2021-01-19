@@ -1,8 +1,18 @@
 name: "Build"
 on: [push, workflow_dispatch]
 jobs:
-  debian-buster:
+  push:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: ['bats-ansible-debian:latest', 'bats-ansible-debian:buster']
+        include:
+          - image: bats-ansible-debian:latest
+            os: debian
+            tag: latest
+          - image: bats-ansible-debian:buster
+            os: debian
+            tag: buster
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,7 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./debian/buster
-          file: ./debian/buster/Dockerfile
+          context: ./${{ matrix.os }}/${{ matrix.tag }}
+          file: ./${{ matrix.os }}/${{ matrix.tag }}/Dockerfile
           push: true
-          tags: alzadude/bats-ansible-debian:buster
+          tags: alzadude/${{ matrix.image }}
