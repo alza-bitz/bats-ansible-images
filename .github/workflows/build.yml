@@ -7,6 +7,7 @@ jobs:
       matrix:
         image: 
           - 'bats-ansible-debian:latest'
+          - 'bats-ansible-debian:bullseye'
           - 'bats-ansible-debian:buster'
           - 'bats-ansible-fedora:latest'
           - 'bats-ansible-fedora:33'
@@ -14,6 +15,9 @@ jobs:
           - image: bats-ansible-debian:latest
             os: debian
             tag: latest
+          - image: bats-ansible-debian:bullseye
+            os: debian
+            tag: bullseye
           - image: bats-ansible-debian:buster
             os: debian
             tag: buster
